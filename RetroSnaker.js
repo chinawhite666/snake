@@ -42,7 +42,16 @@ var Game = (()=> {
 
         serialNumber = nebPay.call(to, value, callFunction, callArgs, {    //使用nebpay的call接口去调用合约,
             listener: function (resp) {
-                console.log("thecallback is " + resp)
+				console.log("thecallback is " + resp)
+				if(typeof resp == "string"){
+					console.log("reject! cancel");
+					alert("已取消上传,那再来一次吧")
+				   
+				}else{
+					alert("上传成功");
+					
+					
+				}
             }
         });
 		ctx.clearRect(0, 0, cw, ch);
@@ -51,7 +60,7 @@ var Game = (()=> {
 		ctx.fillText("You are Dead!", cw/6, ch/2, cw*2/3);
 		ctx.font = ch*1/25 + "px Lucida Console";
 		ctx.fillStyle = "#ccc";
-		ctx.fillText("星云链最高分:" + highScore, cw*6.5/20, ch*5/8, cw*2/5);
+		ctx.fillText("最高分:" + highScore, cw*6.5/20, ch*5/8, cw*2/5);
 		ctx.fillText("Press \"Enter\" to Restart", cw*3/10, 11*ch/15, cw*2/5);
 	}
 	/***************************************************
@@ -147,7 +156,7 @@ var Game = (()=> {
 		snake.color = colorA || defaults.snakeColor;
 		food.color = colorB || defaults.foodColor;
 		food.score = 0;
-		 username=window.prompt("开始游戏需要支付极少的nas","请输入用户名");
+		 username=window.prompt("即将开始游戏","请输入用户名");
 		window.alert("welcome "+username);
 
 		document.removeEventListener("keyup", reStart);
