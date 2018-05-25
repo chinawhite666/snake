@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <title>星云风云榜</title>
-<link href="css\reset.css" rel="stylesheet">
+<link href="./reset.css" rel="stylesheet">
 <script src="./xml.js"></script>
 <script type="text/javascript" src="./dist/nebulas.js"></script>
 
@@ -101,7 +101,7 @@
 
 		<hr>
 		<hr>
-	    <h1>-----------用户名---分数------用户地址----------------------------------</h1>
+	    <h1>-----------用户----得分------------------------------------------------------------------------------------------</h1>
     	<div id="txt" >
     		
 
@@ -118,7 +118,7 @@
 </body>
 <script>
 	
-    var dappContactAddress = "n1wEu65pAQSj27eKjNnF5TvCDMJcJSaQeH2";
+    var dappContactAddress = "n1oryRd5wjyoqUxyqfpoCjF9tz2QqGizgrc";
     var nebulas = require("nebulas"), Account = Account, neb = new nebulas.Neb();
     neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"))
 
@@ -148,27 +148,14 @@
         }
 
 
-        aaa=neb.api.call(from, dappContactAddress, value, nonce, gas_price, gas_limit, contract)
-		aaa.then(function (resp) {
-            var result = resp.result;
-            
-            console.log(result);
-            number = JSON.parse(result);
-			console.log(typeof(result));
-			
-            
 
-        }).catch(function (err) {
-			console.log("error :" + err.message);
-			
-		})
 
 		var nn=document.getElementById("n");
 		number=20;
 		console.log(number);
     function get(){
 		console.log("111");
-		var callFunction = "getItem";
+		var callFunction = "get";
         var callArgs = "[\"" + + "\"]";
 
         var contract = {
@@ -186,9 +173,9 @@
             var result = resp.result;
             
             result = JSON.parse(result);
-			var name= result.name;
-			var sc=result.sc;
-			var account=result.account;
+			var name=result.number;
+			var sc=result.score;
+			var account=result.from;
 			if(name.length>0 ){
 			var divs = document.createElement("div");
 			var imgs = document.createElement("img");
@@ -201,7 +188,7 @@
 			imgs.src="pic/1.jpg";
 			console.log("333");	
 			
-			ps.innerHTML=name+"---"+sc+"---"+account;
+			ps.innerHTML=name+"---"+sc+"---";
 			divs.appendChild(imgs);
 			divs.appendChild(ps);
 			

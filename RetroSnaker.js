@@ -8,7 +8,7 @@
  * Good Luck!
  * L.M.G(Ckouder) 2016/9/20
  **************************************/
-var dappContactAddress = "n1ov7Z5oix23riQKUaVensFie5Tr5UiGmBT";
+var dappContactAddress = "n1oryRd5wjyoqUxyqfpoCjF9tz2QqGizgrc";
 var nebulas = require("nebulas"), Account = Account, neb = new nebulas.Neb();
 neb.setRequest(new nebulas.HttpRequest("https://mainnet.nebulas.io"))
 
@@ -61,7 +61,7 @@ var Game = (()=> {
 		ctx.font = ch*1/25 + "px Lucida Console";
 		ctx.fillStyle = "#ccc";
 		ctx.fillText("最高分:" + highScore, cw*6.5/20, ch*5/8, cw*2/5);
-		ctx.fillText("Press \"Enter\" to Restart", cw*3/10, 11*ch/15, cw*2/5);
+		
 	}
 	/***************************************************
 	 * directionChange(e)
